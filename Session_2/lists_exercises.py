@@ -24,7 +24,9 @@ def foods():
     # The last item in the sublist
     print(foods[-4][-1])
 
-# foods()
+
+foods()
+
 
 # Format and print the contents of the following list so that the output appears as depicted:
 # A little bit of Monica in my life
@@ -49,12 +51,13 @@ def mambo_number_5():
     lyrics = ""
     for mambo in mambo_number_5:
         lyrics += f"A little bit of {mambo[0]} {mambo[1]};\n"
-        print(f"{lyrics}A little bit of you makes me your man (ah!)\n*trumpet solo*")
+    print(f"{lyrics}A little bit of you makes me your man (ah!)\n*trumpet solo*")
 
 
-# mambo_number_5()
+mambo_number_5()
 
 # Ask the user for three names. Add each name to a list, and then print the list.
+
 
 def names():
     names = []
@@ -62,4 +65,32 @@ def names():
         names.append(input("Please provide a name: "))
     print(names)
 
+
 names()
+
+# Use the following starter code:
+# a = [1, 2, 3]
+# b = [4, 5, 6]
+# c = [7, 8, 9]
+# d = []
+# e = []
+# Print the following lists:
+# [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+# [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+
+def list_concatenation():
+    a = [1, 2, 3]
+    b = [4, 5, 6]
+    c = [7, 8, 9]
+    d = []
+    e = []
+    d.extend([a, b, c])
+    for list in d:
+        for l in list:
+            e.append(l)
+    for list in [a, b, c, d, e]:
+        print(list)
+
+
+list_concatenation()
