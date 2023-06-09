@@ -84,3 +84,31 @@ for grocery in groceries:
       quantity = int(input(f"Please enter the quanity for {grocery[0]}: ")) * grocery[1] 
       total += quantity
 print(round(total,2))
+
+# Let's improve the guessing game you wrote in Q3 of the while loop exercises. 
+# Update the code so that when the game ends, the program asks the player if they would 
+# like to play again. If they input "no", the game ends, but with any other input the game
+# begins again.
+
+# import random
+
+# secret_number = random.randint(0, 101)
+# while True:
+#       try:
+#             number_guess = int(input("Guess the secret number: "))
+#             break
+#       except ValueError:
+#             print("I'm sorry, I do not understand. Please guess an integer. ")
+# while number_guess != secret_number:
+#       if number_guess > secret_number:
+#             try:
+#                   number_guess = int(input("My number is lower than your guess. Try again! "))
+#                   break
+#             except ValueError:
+#                   print("I'm sorry, I do not understand. Please guess an integer. ")
+#       else:
+#             try:
+#                   number_guess = int(input("My number is higher than your guess. Try again! "))
+#             except ValueError:
+#                   print("I'm sorry, I do not understand. Please guess an integer. ")
+# print(f"Congratulations! You guessed my secret number: {secret_number}!")
