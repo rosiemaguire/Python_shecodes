@@ -90,25 +90,34 @@ print(round(total,2))
 # like to play again. If they input "no", the game ends, but with any other input the game
 # begins again.
 
-# import random
+def random_number():
+      import random
+      return random.randint(0, 101)
 
-# secret_number = random.randint(0, 101)
-# while True:
-#       try:
-#             number_guess = int(input("Guess the secret number: "))
-#             break
-#       except ValueError:
-#             print("I'm sorry, I do not understand. Please guess an integer. ")
-# while number_guess != secret_number:
-#       if number_guess > secret_number:
-#             try:
-#                   number_guess = int(input("My number is lower than your guess. Try again! "))
-#                   break
-#             except ValueError:
-#                   print("I'm sorry, I do not understand. Please guess an integer. ")
-#       else:
-#             try:
-#                   number_guess = int(input("My number is higher than your guess. Try again! "))
-#             except ValueError:
-#                   print("I'm sorry, I do not understand. Please guess an integer. ")
-# print(f"Congratulations! You guessed my secret number: {secret_number}!")
+def number_guess():
+      while True:
+            try:
+                  guess = int(input("Guess the secret number: "))
+                  break
+            except ValueError:
+                  print("I'm sorry, I do not understand. Please guess an integer. ")
+      return guess
+
+while True:
+      secret_number = random_number()
+      player_guess = number_guess()
+      while player_guess != secret_number:
+            if player_guess > secret_number:
+                  print("My number is lower than your guess. Try again! ")
+                  player_guess = number_guess()
+            else:
+                  print("My number is higher than your guess. Try again!")
+                  player_guess = number_guess()
+      
+      print(f"Congratulations! You guessed my secret number: {secret_number}!")    
+      
+      play_game = input("Would you like to play again? ")
+      if play_game != "no":
+            continue
+      else:
+            break
