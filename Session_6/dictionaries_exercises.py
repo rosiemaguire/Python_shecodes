@@ -1,6 +1,7 @@
 import sys
 sys.path.append("..")
 
+print("Question 1")
 # Q1
 # The dictionary below represents the cost of individual items in a supermarket. Write a
 # program that asks the user how many of each item they would like in turn, and outputs
@@ -26,7 +27,7 @@ def grocery_shop(groceries):
 
 # print(f"Your total shop today comes to ${grocery_shop(groceries)}.")
 
-
+print("\n Question 2")
 # Q2
 # In the last lesson, you wrote a program that counted the number of colour names in
 # the colours_865.csv file.
@@ -51,14 +52,14 @@ def read_csv(file):
             csv_data.append(row)
     return csv_data
 
-def get_third_item_from_list(some_list):
-    third_item_from_list = []
+def get_item_from_list_by_index(some_list,index):
+    item_from_list = []
     for item in some_list:
         if all(isinstance(item, str) for item in some_list):
-            third_item_from_list += (item[2].split())
+            item_from_list += (item[index].split())
         else:
-            third_item_from_list.append(item[2])
-    return third_item_from_list
+            item_from_list.append(item[index])
+    return item_from_list
 
 # returns count if string exists as word or partial word
 def check_partial_string_exists(file, dictionary):
@@ -79,11 +80,11 @@ def check_full_string_exists(file, dictionary):
     return dictionary
 
 data = read_csv("../Session_5/colours_865.csv")
-colour_names = get_third_item_from_list(data)
-# print(check_partial_string_exists(colour_names,colour_counts))
-# print(check_full_string_exists(colour_names,colour_counts))
+colour_names = get_item_from_list_by_index(data,2)
+print(check_partial_string_exists(colour_names,colour_counts))
+print(check_full_string_exists(colour_names,colour_counts))
 
-
+print("\n Question 3")
 # Q3
 # Read the colour data from colours_20_simple.csv 
 # and save the data in a dictionary where each key is a hex code and each value is the
@@ -99,8 +100,9 @@ def make_hexcode_colour_dictionary(file):
             hex_code_dict[row[1]] = row[2]
     return hex_code_dict
 
-# print(make_hexcode_colour_dictionary(colours_20))
+print(make_hexcode_colour_dictionary(colours_20))
 
+print("\n Question 4")
 # Q4
 # Modify your code from the previous exercise to save both the English name and RGB
 # code in a list as the value for the corresponding hex code.
@@ -113,8 +115,9 @@ def make_hexcode_colour_and_RGB_dictionary(file):
             hex_code_dict[row[1]] = [row[0], row[2]]
     return hex_code_dict
 
-# print(make_hexcode_colour_and_RGB_dictionary(colours_20))
+print(make_hexcode_colour_and_RGB_dictionary(colours_20))
 
+print("\n Question 5")
 # Q5 (Extra Tricky)
 # Modify your code from the previous exercise to save both the English name and RGB
 # code in a dictionary as the value for the corresponding hex code
