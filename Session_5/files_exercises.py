@@ -2,13 +2,17 @@
 # Write a program that reads in colours_20_simple.csv and print each line of the colour
 # data one by one as a string. Use spaces to separate the columns insead of commas.
 import csv
-with open(file="colours_20_simple.csv") as csv_file:
-    csv_file = csv_file.readlines()
-    csv_data=[]
-    csv_reader = csv.reader(csv_file, delimiter=",")
-    for line in csv_reader:
-        print(line[0],line[1],line[2])
+def read_csv(file):
+    with open(file) as file:
+        reader = csv.reader(file)
+        csv_data = []
+        for row in reader:
+            csv_data.append(row)
+    return csv_data
 
+data = read_csv("colours_20_simple.csv")
+# for row in data:
+#     print(row[0],row[1],row[2])
 
 # Q2
 # Write a program that reads in colours_20_simple.csv and outputs the colour data in
@@ -19,7 +23,7 @@ with open(file="colours_20_simple.csv") as csv_file:
 #     for row in reader:
 #         print (f"{list(row.values())[2]}, {list(row.keys())[1]}: {list(row.values())[1]}, {list(row.keys())[0]}: {list(row.values())[0]}")
 # # 
-def read_csv(file_path):
+def read_csv_as_dict(file_path):
     with open(file_path, 'r') as file:
         reader = csv.reader(file)
         headers = next(reader)  # Read the header row
@@ -27,7 +31,7 @@ def read_csv(file_path):
         return data
     
 def order_data(data):
-        data = read_csv(data)
+        data = read_csv_as_dict(data)
         desired_order = ['English','HEX','RGB']
         reordered_data = []
         for row in data:
@@ -84,3 +88,31 @@ def colour_exists_in_string (file,colours):
             colour_dict[colour]=sum(s.count(colour.lower()) for s in lowercase_colours)
         return colour_dict
 # print(colour_exists_in_string("colours_865.csv",["red","green","blue","yellow"]))
+
+# Q4
+# galaxies.csv contains data about 82 different galaxies and their velocities (km/sec).
+# Using this data, print a string showing the galaxy with the slowest velocity, and
+# another showing the galaxy with the highest velocity
+
+def get_list_of_second_item(list_of_lists):
+    second_items = []
+    for items in list_of_lists:
+        second_items.append(int(items[1]))
+    return second_items
+
+def get_galaxy(galaxies_list,velocity):
+    for row in range(0, len(galaxies_list)):
+        if (int(galaxies_list[row][1])) == velocity:
+            galaxy = galaxies_list[row]
+        else:
+            pass
+    return galaxy
+
+galaxies_list = read_csv("galaxies.csv")
+slowest = min(get_list_of_second_item(galaxies_list))
+fastest = max(get_list_of_second_item(galaxies_list))
+slowest_galaxy = get_galaxy(galaxies_list,slowest)
+fastest_galaxy = get_galaxy(galaxies_list,fastest)
+
+print(f"Galaxy {slowest_galaxy[0]} has the min velocity of {slowest_galaxy[1]}km/sec.")
+print(f"Galaxy {fastest_galaxy[0]} has the max velocity of {fastest_galaxy[1]}km/sec.")
