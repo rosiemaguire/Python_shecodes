@@ -9,12 +9,16 @@ def read_csv(file):
         csv_data = []
         for row in reader:
             csv_data.append(row)
-    return csv_data
+        return csv_data
 
 def read_data_line_as_string(data_list):
+    data_string = ''
     for data in data_list:
-        data = ' '.join(data)
-    return data
+        if data == data_list[-1]:
+            data_string += ' '.join(data)
+        else:
+            data_string += ' '.join(data) +"\n"
+    return data_string
 
 data = read_csv("colours_20_simple.csv")
 print(read_data_line_as_string(data))
